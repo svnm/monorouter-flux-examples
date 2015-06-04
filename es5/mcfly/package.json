@@ -1,0 +1,23 @@
+{
+  "name": "monorouter-flux-mcfly",
+  "version": "1.0.0",
+  "description": "A flux example using monorouter and mcfly",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack --config webpack.browser.config.js && webpack --config webpack.server.config.js",
+    "serve": "node ./built/server.js",
+    "start": "npm run build && npm run serve"
+  },
+  "author": "Steven Iseki <stevenisekimartin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.7.2",
+    "react": "^0.11.1",
+    "monorouter": "^0.11.3",
+    "monorouter-react": "^0.4.1",
+    "connect-monorouter": "^0.4.0",
+    "webpack": "^1.3.2-beta9",
+    "jsx-loader": "~0.11.0",
+    "mcfly": "^0.0.10"
+  }
+}
