@@ -3,26 +3,40 @@
 var React = require('react')
 var App = require('../templates/App')
 var PetStore = require('../../stores/PetStore')
+var PetActions = require('../../actions/PetActions')
 var PetView = require('../PetView')
 
 /* controller view react class with stores */
 
 var PetListComponent = React.createClass({
 
-  mixins: [PetStore.mixin],
+  getInitialState: function() {
+    return PetStore.getState();
+  },
 
-  getStateFromFlux: function() {
-    return {
-      pets: PetStore.getPets()
+  componentDidMount: function() {
+    PetStore.listen(this.onChange);
+
+    // seed the data in an init method... must be a better place
+
+    // by the way this keeps getting init'd and 
+    // a heap of pets are being added.....
+    
+    this.init(this.props.pets)
+  },
+
+  init: function (pets) {
+    for (var i = 0; i < pets.length; i += 1) {
+      PetActions.addItem(pets[i])
     }
   },
-  
-  getInitialState: function() {
-    return this.getStateFromFlux()
+
+  componentWillUnmount: function() {
+    PetStore.unlisten(this.onChange);
   },
 
-  onChange: function() {
-    this.setState(this.getStateFromFlux())
+  onChange: function (state) {
+    this.setState(state);
   },
 
   render: function() {
@@ -40,17 +54,17 @@ var PetListComponent = React.createClass({
       <div>{links}</div>
     );
   }
-
 });
+
 
 /* controller view, initialized from monorouter */
 
-function PetList(props) {  
+function PetList(data) {  
 
   return (
     <App>
       <ul className="PetList">
-        <PetListComponent />
+        <PetListComponent pets={data.pets} />
       </ul>
     </App>
   );

@@ -2,7 +2,7 @@ var monorouter = require('monorouter');
 var reactRouting = require('monorouter-react');
 var PetStore = require('./stores/PetStore')
 var PetList = require('./components/controller-views/PetList')
-var PetDetails = require('./components/controller-views/PetDetail')
+var PetDetail = require('./components/controller-views/PetDetail')
 
 /* simulate an API call */
 
@@ -28,19 +28,21 @@ function findAllPets() {
 }
 
 
+/* controller view, initialized from monorouter */
+
 module.exports = monorouter()
   .setup(reactRouting())
 
   .route('index', '/', function(req) {
       // seed the store
+
       var pets = findAllPets()
-      PetStore.setPets(pets)
-      this.render(PetList);
+      this.render(PetList, {pets: pets})
   })
 
   .route('pet', '/pet/:name', function(req) {
       // seed the store
+
       var pet = findPet(req.params.name)
-      PetStore.setPet(pet)
-      this.render(PetDetails);
+      this.render(PetDetail, {pet: pet})
   });

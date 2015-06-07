@@ -6,7 +6,7 @@ function App(props, children) {
   return (
     <html>
       <head>
-        <title>Alt Example</title>
+        <title>Fluxxor Example</title>
       </head>
       <body>
         {children}

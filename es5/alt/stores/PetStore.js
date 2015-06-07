@@ -1,33 +1,29 @@
 var alt = require('../alt')
-//var PetActions = require ('../actions/PetActions')
+var PetActions = require ('../actions/PetActions')
 
-var PetStore = function(){
-   var pets = [];
-   var pet = {name: 'Winston', description: 'Winston is a fluffy dog'}
-   function getPet(){
-     return pet;
-   }
+function PetStore(data) {
 
-   function getPets(){
-     return pets;
-   }
+  // init store
+  /*
+  for (var i = 0; i < data.length; i += 1) {
+    //this.pets.push(data[i]);
+  }
+  */
 
-   function setPet(p){
-     pet = p;
-   }
+  this.pets = [];
+  this.pet = {};
 
-   function setPets(p){
-     pets = p;
-   }
+  this.bindListeners({
+    addItem: PetActions.addItem
+  });
+}
 
-   return {
-      name: 'PetStore',
-      setPet: setPet,
-      setPets: setPets,
-      getPet: getPet,
-      getPets: getPets
-   }
-}();
+// This method and the idea of a pet and pets, 
+// seems a bit wierd...
+PetStore.prototype.addItem = function (item) {
+  this.pet = item;
+  this.pets.push(item);
+};
 
-//module.exports = alt.createStore(PetStore, 'PetStore')
-module.exports = PetStore;
+PetStore.displayName = 'PetStore';
+module.exports = alt.createStore(PetStore);
