@@ -18,7 +18,4 @@ This will start a server on port 5000. Go to `http://localhost:5000` to see the 
 
 ### es6
 
-- mcfly
-- alt
-- flummox
-- fluxxor
+... coming soon
