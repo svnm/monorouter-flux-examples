@@ -19,3 +19,7 @@ This will start a server on port 5000. Go to `http://localhost:5000` to see the 
 ### es6
 
 ... coming soon
+
+## License
+
+[MIT](http://isekivacenz.mit-license.org/)
