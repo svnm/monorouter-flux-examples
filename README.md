@@ -18,7 +18,9 @@ This will start a server on port 5000. Go to `http://localhost:5000` to see the 
 
 ### es6
 
-... monorouter does not seem to work well with the recent version of react https://github.com/matthewwithanm/monorouter/issues/47, however there is an example using babel and es6 here... https://github.com/matthewwithanm/monorouter/tree/for-StevenIseki/examples/browser
+... monorouter does not seem to work well with the recent version of react https://github.com/matthewwithanm/monorouter/issues/47
+
+There is an example using monorouter with babel and es6 here... https://github.com/matthewwithanm/monorouter/tree/for-StevenIseki/examples/browser
 
 ## License
 
